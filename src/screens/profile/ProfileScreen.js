@@ -1,59 +1,81 @@
+import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { ScrollView, View, ActivityIndicator } from "react-native";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { ScrollView, View, ActivityIndicator, TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons";
+
+import ItemListEdit from "../../components/listItemCardEdit/Index";
 import ItemList from "../../components/listItemCard/Index";
 import CardUser from "../../components/cardUser/Index";
 import api from "../../services/api";
 import Styles from "./Style";
+import { AuthContext } from "../../services/AuthContext";
 
 export function ProfileScreen() {
-    const [items, setItems] = useState([]);
-    const [user, setUser] = useState([]);
-    const navigation = useNavigation();
     const route = useRoute();
+    const navigation = useNavigation();
+    const { user } = useContext(AuthContext);
+
     const [isLoading, setIsLoading] = useState(true);
+    const [userData, setUserData] = useState([]);
+
+    function isUserOwner() {
+        if (user && user.id === route.params?.id) {
+            return true;
+        }
+        return false;
+    }
 
     useEffect(() => {
-        async function fetchApi() {
+        const fetchUser = async () => {
             try {
-                const responseUser = await api.get(
-                    "/users?id=" + route.params?.id
-                );
-                const responseItems = await api.get(
-                    "/items?id_user=" + route.params?.id
-                );
-                setUser(responseUser.data[0]);
-                setItems(responseItems.data);
+                const response = await api.get(`/users/${route.params?.id}`);
+                setUserData(response.data);
             } catch (error) {
-                console.error("Error fetching items:", error);
+                console.error("Error fetching User:", error);
             } finally {
                 setIsLoading(false);
             }
-        }
+        };
 
-        fetchApi();
+        fetchUser();
     }, [route.params?.id]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: user.name,
+            title: userData?.name || "Perfil do Usuario",
         });
-    }, [user]);
+    }, [navigation, userData]);
 
-    return (
-        <View style={Styles.container}>
-            {isLoading ? (
-                <ActivityIndicator size="large" color="#000" />
-            ) : (
-                <>
-                    <View style={Styles.profile}>
-                        {user && <CardUser user={user} />}
-                    </View>
-                    <ScrollView>
-                        <ItemList items={items} />
-                    </ScrollView>
-                </>
-            )}
-        </View>
-    );
+
+    function handleItemEdit() {
+        navigation.navigate("ConfigScreen");
+    }
+
+    const renderContent = () => {
+        if (isLoading) {
+            return <ActivityIndicator size="large" color="#000" />;
+        }
+
+        return (
+            <>
+                <View style={Styles.profile}>
+                    {userData && <CardUser user={userData} />}
+                    {isUserOwner() &&
+                        <TouchableOpacity style={Styles.profileEdit} onPress={handleItemEdit}>
+                            <Feather name="edit" size={24} />
+                        </TouchableOpacity>}
+                </View>
+                <ScrollView>
+                    {isUserOwner() ? (
+                        <ItemListEdit items={userData.services} />
+                    ) : (
+                        <ItemList items={userData.services} />
+                    )}
+                </ScrollView>
+            </>
+        );
+    };
+
+    return <View style={Styles.container}>{renderContent()}</View>;
 }
+

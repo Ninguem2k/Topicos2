@@ -4,9 +4,14 @@ import Styles from "./Style";
 import React from "react";
 
 const FilterBar = ({ filters, activeFilter, setActiveFilter }) => {
+
+    const handleDataFilter = (filter) => {
+        setActiveFilter(filter);
+    };
+
     return (
         <View style={Styles.container}>
-            <FilterCep/>
+            <FilterCep />
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {filters.map((filter, index) => {
                     const isActive = activeFilter === filter;
@@ -17,7 +22,7 @@ const FilterBar = ({ filters, activeFilter, setActiveFilter }) => {
                                 Styles.filterButton,
                                 isActive && Styles.activeFilterButton,
                             ]}
-                            onPress={() => setActiveFilter(filter)}>
+                            onPress={() => handleDataFilter(filter)}>
                             <Text
                                 style={[
                                     Styles.filterText,

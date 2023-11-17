@@ -1,49 +1,54 @@
+import React, { useState, useEffect, useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import CardUser from "../../components/cardUser/Index";
-import React, { useState, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
-import api from "../../services/api";
+
 import Styles from "./Style";
+import { AuthContext } from "../../services/AuthContext";
+import CardUser from "../../components/cardUser/Index";
 
 export const MenuScreen = () => {
-    const navigation = useNavigation();
-    const [user, setUser] = useState([]);
+  const navigation = useNavigation();
+  const [userData, setUserData] = useState(null);
+  const { user, logout } = useContext(AuthContext);
 
-    useEffect(() => {
-        async function fetchUser() {
-            try {
-                const responseUser = await api.get("/users?id=" + 2);
-                setUser(responseUser.data[0]);
-            } catch (error) {
-                console.error("Error fetching User:", error);
-            }
-        }
+  useEffect(() => {
+    setUserData(user);
+  }, [user]);
 
-        fetchUser();
-    }, [2]);
+  const handleLogout = async () => {
+    if (!user) {
+      return
+    }
 
-    const handleLogout = () => {};
+    logout();
+  };
 
-    const handleSettings = () => {};
+  const handleSettings = () => {
+    navigation.navigate("ConfigScreen");
+  };
 
-    const handleFavorite = () => {};
+  const handleFavorite = () => { };
 
-    const handleLogin = () => {
-        navigation.navigate("LoginScreen");
-    };
+  const handleProfile = () => {
+    navigation.navigate("ProfileScreen", { id: user.id });
+  };
 
-    const handleRegister = () => {
-        navigation.navigate("CreateUserScreen");
-    };
-    const handleAddItem = () => {
-        navigation.navigate("AddItemScreen");
-    };
+  const handleLogin = () => {
+    navigation.navigate("LoginScreen");
+  };
 
-    
+  const handleRegister = () => {
+    navigation.navigate("CreateUserScreen");
+  };
+
+  const handleAddItem = () => {
+    navigation.navigate("AddItemScreen");
+  };
+
   return (
     <View style={Styles.container}>
-      {!user ? (
+      {!userData ? (
         <View style={Styles.login}>
           <TouchableOpacity onPress={handleRegister}>
             <Text style={Styles.buttonTextLogin}>Cadastrar</Text>
@@ -53,8 +58,8 @@ export const MenuScreen = () => {
           </TouchableOpacity>
         </View>
       ) : (
-        <TouchableOpacity >
-          <CardUser user={user} />
+        <TouchableOpacity onPress={handleProfile}>
+          <CardUser user={userData} />
         </TouchableOpacity>
       )}
       <View style={Styles.cardButtons}>
@@ -78,4 +83,3 @@ export const MenuScreen = () => {
     </View>
   );
 };
-

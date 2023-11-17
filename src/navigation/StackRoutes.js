@@ -1,15 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { HomeScreen } from "../screens/home/HomeScreen";
-import { MenuScreen } from "../screens/menu/MenuScreen";
-import { LoginScreen } from "../screens/login/LoginScreen";
-import { SearchScreen } from "../screens/search/SearchScreen";
 import { AddItemScreen } from "../screens/addItem/AddItemScreen";
-import { ProfileScreen } from "../screens/profile/ProfileScreen";
-import { DetailsScreen } from "../screens/details/DetailsScreen";
-import { CreateUserScreen } from "../screens/login/CreateUserScreen";
-import { FavoritesScreen } from "../screens/favorites/FavoritesScreen";
 import { CategoriesScreen } from "../screens/categories/CategoriesScreen";
+import { ConfigScreen } from "../screens/config/ConfigScreen";
+import { CreateUserScreen } from "../screens/createUser/CreateUserScreen";
+import { DetailsScreen } from "../screens/details/DetailsScreen";
+import { FavoritesScreen } from "../screens/favorites/FavoritesScreen";
+import { HomeScreen } from "../screens/home/HomeScreen";
+import { LoginScreen } from "../screens/login/LoginScreen";
+import { MenuScreen } from "../screens/menu/MenuScreen";
+import { ProfileScreen } from "../screens/profile/ProfileScreen";
+import { SearchScreen } from "../screens/search/SearchScreen";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +35,12 @@ export function SackRoutes() {
             />
             <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
             <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
-            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <Stack.Screen name="ConfigScreen" component={ConfigScreen} />
+            <Stack.Screen
+                name="ProfileScreen"
+                options={{ title: "Perfil do Usuario" }}
+                component={ProfileScreen}
+            />
             <Stack.Screen
                 name="CategoriesScreen"
                 options={{ title: "Nome da categoria" }}

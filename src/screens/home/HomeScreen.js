@@ -1,21 +1,32 @@
+import React, { useState, useEffect, useContext } from "react";
+import { View, Text, ScrollView, ActivityIndicator } from "react-native";
+
 import CardHorizontalScroll from "../../components/cardHorizontalScroll/Index";
 import CardCategory from "../../components/cardCategory/Index";
-import { View, Text, ScrollView, ActivityIndicator } from "react-native";
+import CardEmphasisHorizontalScroll from "../../components/cardEmphasisHorizontalScroll/Index";
+import { AuthContext } from "../../services/AuthContext";
 import Search from "../../components/search/Index";
-import { useState, useEffect } from "react";
 import api from "../../services/api";
 import Styles from "./Style";
 
 export function HomeScreen() {
-    const [items, setItems] = useState("");
-    const [categorys, setCategorys] = useState("");
+    const [items, setItems] = useState([]);
+    const [categorys, setCategorys] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { loginWithToken } = useContext(AuthContext);
 
     useEffect(() => {
-        async function fetchApi() {
+        async function login() {
+            await loginWithToken();
+        }
+        login();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
             try {
-                const responseCategorys = await api.get("/categorys");
-                const responseItems = await api.get("/items");
+                const responseCategorys = await api.get("/categories");
+                const responseItems = await api.get("/categories/home");
                 setCategorys(responseCategorys.data);
                 setItems(responseItems.data);
             } catch (error) {
@@ -23,25 +34,26 @@ export function HomeScreen() {
             } finally {
                 setIsLoading(false);
             }
-        }
+        };
 
-        fetchApi();
+        fetchData();
     }, []);
 
     return (
         <View style={Styles.container}>
-        <ScrollView>
-            <Text style={Styles.greetingText}>Olá, seja bem-vindo!</Text>
-            <Search />
-            {isLoading ? (
-                <ActivityIndicator size="large" color="#000" />
-            ) : (
-                <>
-                    <CardCategory categorys={categorys} />
-                    <CardHorizontalScroll items={items} />
-                </>
-            )}
-        </ScrollView>
-    </View>
+            <ScrollView>
+                <Text style={Styles.greetingText}>Olá, seja bem vindo!</Text>
+                <Search />
+                {isLoading ? (
+                    <ActivityIndicator size="large" color="#000" />
+                ) : (
+                    <>
+                        {/* <CardCategory  categorys={categorys.data} /> */}
+                        <CardEmphasisHorizontalScroll items={items.data} />
+                        <CardHorizontalScroll items={items.data} />
+                    </>
+                )}
+            </ScrollView>
+        </View>
     );
 }

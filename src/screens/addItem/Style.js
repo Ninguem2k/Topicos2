@@ -10,33 +10,32 @@ const Styles = StyleSheet.create({
         flex: 1,
         padding: 20,
     },
+    input: {
+        borderRadius: 5,
+        borderWidth: 1,
+        marginBottom: 20,
+        padding: 10,
+    },
+    inputPrice: {
+        borderRadius: 5,
+        borderWidth: 1,
+        marginBottom: 20,
+        marginLeft: 40,
+        padding: 10,
+        width: 160,
+    },
+    inputRC2: {
+        flexDirection: "row-reverse",
+    },
     title: {
         fontSize: 24,
         fontWeight: "bold",
         marginBottom: 20,
     },
-    input: {
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 20,
-    },
-    inputPrice: {
-        width: 160,
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 20,
-        marginLeft: 40,
-    },
-    inputRC2: {
-        flexDirection: "row-reverse",
-    },
-
     button: {
         backgroundColor: COLORS.primary,
-        padding: 13,
         borderRadius: 5,
+        padding: 13,
         width: "100%",
     },
     buttonText: {
@@ -51,5 +50,6 @@ const Styles = StyleSheet.create({
         backgroundColor: COLORS.secondary,
     },
 });
+
 
 export default Styles;

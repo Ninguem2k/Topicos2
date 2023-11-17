@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-
 const COLORS = {
     primary: "#3555fc",
     white: "#FFF",
@@ -13,9 +12,9 @@ const Styles = StyleSheet.create({
         height: "100%",
     },
     greetingText: {
-        marginTop: 25,
+        marginTop: 80,
         marginLeft: 13,
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: "bold",
         color: COLORS.black,
     },

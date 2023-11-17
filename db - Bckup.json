@@ -1,0 +1,401 @@
+{
+    "items": [
+        {
+            "id": "1",
+            "id_user": "5",
+            "title": "Troca de tela de celular",
+            "images": [
+                "data:image/jpeg;base64,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",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos a troca de tela de celulares de diversas marcas. Tenha uma tela nova e sem rachaduras!",
+            "category": "Assistência Técnica",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "2",
+            "id_user": "1",
+            "title": "Manutenção de computadores",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos manutenção e reparos em computadores de todos os tipos. Deixe o seu PC em ótimas condições de funcionamento!",
+            "category": "Assistência Técnica",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "3",
+            "id_user": "7",
+            "title": "Instalação de redes de segurança",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Instalamos sistemas de segurança para proteger o seu patrimônio. Tenha tranquilidade com uma rede de segurança eficiente!",
+            "category": "Assistência Técnica",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "4",
+            "id_user": "1",
+            "title": "Limpeza e manutenção de ar condicionado",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos a limpeza e manutenção de ar condicionado para garantir um ambiente fresco e saudável.",
+            "category": "Assistência Técnica",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "5",
+            "id_user": "4",
+            "title": "Reparo de eletrodomésticos",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos reparos em diversos tipos de eletrodomésticos. Faça seu aparelho voltar a funcionar como novo!",
+            "category": "Assistência Técnica",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+        {
+            "id": "7",
+            "id_user": "2",
+            "title": "Troca de óleo",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos a troca de óleo do seu veículo, garantindo um melhor desempenho e prolongando a vida útil do motor.",
+            "category": "Manutenção Veicular",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "8",
+            "id_user": "7",
+            "title": "Reparo de freios",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos o reparo e substituição de peças dos freios do seu veículo, garantindo sua segurança e eficiência na frenagem.",
+            "category": "Manutenção Veicular",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+        {
+            "id": "9",
+            "id_user": "3",
+            "title": "Troca de tela",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Manutenção Em Geral - Traga Que Resolvemos na Hora",
+            "category": "Assistência Técnica",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+        {
+            "id": "10",
+            "id_user": "2",
+            "title": "Limpeza de ar condicionado",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Limpeza completa do seu ar condicionado Limpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionadoLimpeza completa do seu ar condicionado",
+            "category": "Assistência Técnica",
+            "price": 89,
+            "rating": 4,
+            "discount": 10
+        },
+        {
+            "id": "11",
+            "id_user": "1",
+            "title": "Instalação de TV",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Instalação profissional da sua TV",
+            "category": "Assistência Técnica",
+            "price": 79,
+            "rating": 5,
+            "discount": 15
+        },
+        {
+            "id": "12",
+            "id_user": "3",
+            "title": "Limpeza de carpete",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Limpeza profunda do seu carpete",
+            "category": "Casa",
+            "price": 120,
+            "rating": 3,
+            "discount": 0
+        },
+        {
+            "id": "13",
+            "id_user": "4",
+            "title": "Manutenção de encanamento",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Consertamos vazamentos e entupimentos",
+            "category": "Casa",
+            "price": 99,
+            "rating": 4,
+            "discount": 5
+        },
+        {
+            "id": "14",
+            "id_user": "1",
+            "title": "Instalação de chuveiro elétrico",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Instalação segura e eficiente",
+            "category": "Casa",
+            "price": 89,
+            "rating": 3,
+            "discount": 0
+        },
+        {
+            "id": "15",
+            "id_user": "6",
+            "title": "Pintura de parede",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Transforme sua casa com uma nova pintura",
+            "category": "Casa",
+            "price": 199,
+            "rating": 5,
+            "discount": 25
+        },
+        {
+            "id": "16",
+            "id_user": "6",
+            "title": "Reparo de telhado",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Consertamos vazamentos e infiltrações",
+            "category": "Casa",
+            "price": 299,
+            "rating": 4,
+            "discount": 10
+        },
+        {
+            "id": "17",
+            "id_user": "7",
+            "title": "Troca de pneus",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos a troca de pneus do seu veículo, garantindo maior aderência e segurança nas estradas.",
+            "category": "Manutenção Veicular",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "18",
+            "id_user": "5",
+            "title": "Alinhamento e balanceamento",
+            "images": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos o alinhamento e balanceamento das rodas do seu veículo, proporcionando um melhor desempenho e dirigibilidade.",
+            "category": "Manutenção Veicular",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        },
+
+        {
+            "id": "19",
+            "id_user": "1",
+            "title": "Reparo de sistema de ar condicionado automotivo",
+            "images": [
+                "https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150"
+            ],
+            "description": "Realizamos o reparo e manutenção do sistema de ar condicionado do seu veículo, proporcionando um ambiente confortável durante suas viagens.",
+            "category": "Manutenção Veicular",
+            "price": 54,
+            "rating": 2,
+            "discount": 5
+        }
+    ],
+    "categorys": [
+        {
+            "id": "1",
+            "title": "Casa",
+            "image": "https://img.icons8.com/?size=1x&id=Jtw7Td5X1w0v&format=png"
+        },
+        {
+            "id": "2",
+            "title": "Manutenção Veicular",
+            "image": "https://icons8.com.br/icon/MRyAMhqf1TYe/airplane-take-off"
+        },
+        {
+            "id": "3",
+            "title": "Assistência Técnica",
+            "image": "https://picsum.photos/id/239/200/300"
+        },
+        {
+            "id": "4",
+            "title": "Teste 1",
+            "image": "https://picsum.photos/id/240/200/300"
+        },
+        {
+            "id": "5",
+            "title": "Teste 2",
+            "image": "https://picsum.photos/id/241/200/300"
+        },
+        {
+            "id": "6",
+            "title": "Teste 3",
+            "image": "https://picsum.photos/id/242/200/300"
+        }
+    ],
+    "users": [
+        {
+            "id": "1",
+            "name": "Cássio Gabriel",
+            "phone": "(38) 999256330",
+            "photo": "https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportEntertainmentNews/tagreuters.com2022binary_LYNXMPEI1G0VZ-FILEDIMAGE.jpg?w=280&h=157&crop=1",
+            "rating": 4.5
+        },
+        {
+            "id": "2",
+            "name": "Gabriel Lucas",
+            "phone": "(38) 999771431",
+            "photo": "https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportEntertainmentNews/tagreuters.com2022binary_LYNXMPEI1G0VZ-FILEDIMAGE.jpg?w=280&h=157&crop=1",
+            "rating": 4.5
+        },
+        {
+            "id": "3",
+            "name": "Maria Silva",
+            "phone": "(11) 999888777",
+            "photo": "https://example.com/photo3.jpg",
+            "rating": 4.8
+        },
+        {
+            "id": "4",
+            "name": "João Santos",
+            "phone": "(21) 987654321",
+            "photo": "https://example.com/photo4.jpg",
+            "rating": 4.2
+        },
+        {
+            "id": "5",
+            "name": "Ana Souza",
+            "phone": "(51) 555666777",
+            "photo": "https://example.com/photo5.jpg",
+            "rating": 4.6
+        },
+        {
+            "id": "6",
+            "name": "Carlos Ferreira",
+            "phone": "(31) 123456789",
+            "photo": "https://example.com/photo6.jpg",
+            "rating": 4.9
+        },
+        {
+            "id": "7",
+            "name": "Larissa Oliveira",
+            "phone": "(71) 987654321",
+            "photo": "https://example.com/photo7.jpg",
+            "rating": 4.7
+        },
+        {
+            "id": "8",
+            "name": "Rafaela Santos",
+            "phone": "(84) 999888777",
+            "photo": "https://example.com/photo8.jpg",
+            "rating": 4.4
+        },
+        {
+            "id": "9",
+            "name": "Lucas Souza",
+            "phone": "(61) 555666777",
+            "photo": "https://example.com/photo9.jpg",
+            "rating": 4.1
+        },
+        {
+            "id": "10",
+            "name": "Mariana Ferreira",
+            "phone": "(48) 123456789",
+            "photo": "https://example.com/photo10.jpg",
+            "rating": 4.7
+        }
+    ]
+}

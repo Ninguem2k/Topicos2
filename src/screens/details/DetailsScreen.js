@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
     Text,
     View,
@@ -8,38 +9,35 @@ import {
     TouchableOpacity,
     ActivityIndicator,
 } from "react-native";
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import WhatsappButton from "../../components/whatsappButton/Index";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
-import CardUser from "../../components/cardUser/Index";
-import api from "../../services/api";
+
 import Styles from "./Style";
+import api from "../../services/api";
+import CardUser from "../../components/cardUser/Index";
+import WhatsappButton from "../../components/whatsappButton/Index";
 
 export const DetailsScreen = () => {
     const [currentImage, setCurrentImage] = useState(0);
-    const navigation = useNavigation();
     const [isLoading, setIsLoading] = useState(true);
-    const route = useRoute();
-    const [item, setItem] = useState([]);
-    const [user, setUser] = useState([]);
+    const [item, setItem] = useState(null);
     const [displayedComponentInfo, setDisplayedComponentInfo] = useState("description");
+    const navigation = useNavigation();
+    const route = useRoute();
 
     useEffect(() => {
-        async function fetchItems() {
+        const fetchItem = async () => {
             try {
-                const responseItem = await api.get(
-                    "/items?id=" + route.params?.id
-                );
-                setItem(responseItem.data[0]);
+                const response = await api.get(`/services/${route.params?.id}`);
+                setItem(response.data.data[0]);
             } catch (error) {
                 console.error("Error fetching item:", error);
             } finally {
                 setIsLoading(false);
             }
-        }
+        };
 
-        fetchItems();
+        fetchItem();
     }, [route.params?.id]);
 
     useLayoutEffect(() => {
@@ -132,7 +130,7 @@ export const DetailsScreen = () => {
                     <View style={Styles.slideshowContainer}>
                         <ScrollView horizontal pagingEnabled onScroll={handleImageScroll}>
                             {imagesToRender.map((image, index) => (
-                                <Image key={index} source={{ uri: image }} style={Styles.slideshowImage} />
+                                <Image key={index} source={{ uri: image.url }} style={Styles.slideshowImage} />
                             ))}
                         </ScrollView>
                     </View>
@@ -195,3 +193,4 @@ export const DetailsScreen = () => {
         </ScrollView >
     );
 };
+

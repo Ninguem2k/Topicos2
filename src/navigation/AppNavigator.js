@@ -1,9 +1,10 @@
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+
 import { SackRoutes } from "./StackRoutes";
 import { SearchScreen } from "../screens/search/SearchScreen";
-import { FavoritesScreen } from "../screens/favorites/FavoritesScreen";
 import { MenuScreen } from "../screens/menu/MenuScreen";
-import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,37 +14,44 @@ export function Routes() {
             <Tab.Screen
                 name="HomeTab"
                 component={SackRoutes}
-                options={{
-                    tabBarIcon: ({ color, size, focused }) =>
-                        getTabBarIcon("home", color, size, focused),
-                }}
+                options={({ route }) => ({
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <Ionicons
+                            name={focused ? "home" : "home-outline"}
+                            color={focused ? "#7e64ff" : color}
+                            size={size}
+                        />
+                    ),
+                    tabBarVisible: isTabVisible(route.name),
+                })}
             />
-
             <Tab.Screen
                 name="SearchTab"
                 component={SearchScreen}
-                options={{
-                    tabBarIcon: ({ color, size, focused }) =>
-                        getTabBarIcon("search", color, size, focused),
-                }}
+                options={({ route }) => ({
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <Ionicons
+                            name={focused ? "search" : "search-outline"}
+                            color={focused ? "#7e64ff" : color}
+                            size={size}
+                        />
+                    ),
+                    tabBarVisible: isTabVisible(route.name),
+                })}
             />
-
-            {/* <Tab.Screen
-                name="Ordered"
-                component={FavoritesScreen}
-                options={{
-                    tabBarIcon: ({ color, size, focused }) =>
-                        getTabBarIcon("cart", color, size, focused),
-                }}
-            /> */}
-
             <Tab.Screen
-                name="Menu"
+                name="MenuTab"
                 component={MenuScreen}
-                options={{
-                    tabBarIcon: ({ color, size, focused }) =>
-                        getTabBarIcon("menu", color, size, focused),
-                }}
+                options={({ route }) => ({
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <Ionicons
+                            name={focused ? "people" : "people-outline"}
+                            color={focused ? "#7e64ff" : color}
+                            size={size}
+                        />
+                    ),
+                    tabBarVisible: isTabVisible(route.name),
+                })}
             />
         </Tab.Navigator>
     );
@@ -54,13 +62,13 @@ const screenOptions = {
     tabBarHideOnKeyboard: true,
     tabBarShowLabel: false,
     tabBarActiveTintColor: "#121212",
-    tabBarStyle: { backgroundColor: "#fff", borderTopWidth: 0 },
+    tabBarStyle: {
+        backgroundColor: "#fff",
+        borderTopWidth: 0,
+    },
 };
 
-function getTabBarIcon(name, color, size, focused) {
-    if (focused) {
-        return <Ionicons name={name} color="#000" size={size} />;
-    } else {
-        return <Ionicons name={`${name}-outline`} color={color} size={size} />;
-    }
+function isTabVisible(routeName) {
+    const allowedScreens = ["HomeTab", "SearchTab", "MenuTab"];
+    return allowedScreens.includes(routeName);
 }

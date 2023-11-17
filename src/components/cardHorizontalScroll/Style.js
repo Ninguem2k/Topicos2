@@ -19,6 +19,7 @@ const Styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     title: {
+        maxWidth: 180,
         fontSize: 20,
         fontWeight: "bold",
         marginLeft: 5,
