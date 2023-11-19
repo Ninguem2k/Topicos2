@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const Styles = StyleSheet.create({
     container: {
-        marginTop: 20,
+        marginTop: 15,
         margin: 10,
     },
 
@@ -15,7 +15,7 @@ const Styles = StyleSheet.create({
     },
 
     cardText: {
-        marginBottom: 10,
+        marginBottom: 5,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",

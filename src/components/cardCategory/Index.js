@@ -24,19 +24,21 @@ const CardCategory = ({ categorys }) => {
                             }
                             key={category.id}>
                             <View style={Styles.cardContent}>
-                                {/* <View style={Styles.card}>
+                                <View style={Styles.cardCategorie}>
+                                    {/* <View style={Styles.card}>
                                     <Image
                                         source={{ uri: category.icon_url }}
                                         style={Styles.cover}
                                     />
                                 </View> */}
 
-                                <Text
-                                    numberOfLines={2}
-                                    ellipsizeMode="tail"
-                                    style={Styles.title}>
-                                    {category.name}
-                                </Text>
+                                    <Text
+                                        // numberOfLines={2}
+                                        // ellipsizeMode="tail"
+                                        style={Styles.title}>
+                                        {category.name}
+                                    </Text>
+                                </View>
                             </View>
                         </TouchableOpacity>
                     ))}

@@ -1,43 +1,44 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/Ionicons";
 
 import Styles from "./Style";
 import WhatsappButton from "../../components/whatsappButton/Index";
 
 const ItemCard = ({ item }) => {
     const { id, images, name, price, discount } = item;
-
     const navigation = useNavigation();
 
-    const handleNavigateItem = (itemId) => {
-        navigation.navigate("DetailsScreen", { id: itemId });
+    const handleNavigateItem = () => {
+        navigation.navigate("DetailsScreen", { id });
     };
-    const coverSelect = images.length !== 0 ? images[0].url : "https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg";
+
+    const coverSelect =
+        images.length !== 0
+            ? images[0].url
+            : "https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg";
 
     return (
-        <TouchableOpacity onPress={() => handleNavigateItem(id)}>
+        <TouchableOpacity onPress={handleNavigateItem}>
             <View style={Styles.container}>
-                <Image source={{ uri: coverSelect }} style={Styles.image} />
-                <View style={Styles.infoContainer}>
-                    <Text style={Styles.name}>{name}</Text>
+                <View style={Styles.cardImage}>
+                    <Image source={{ uri: coverSelect }} style={Styles.image} />
                     <View style={Styles.rating}>
-                        {[...Array(5)].map((_, i) => (
-                            <Feather
-                                key={i}
-                                name="star"
-                                size={14}
-                                color={i < Math.floor(5) ? "#FFD700" : "#CCC"}
-                            />
-                        ))}
+                        <Icon name={"star"} size={15} color="#ff0" />
+                        <Text style={Styles.ratingText}>{"4"}</Text>
                     </View>
-                    {discount >= 0 && (
-                        <Text style={Styles.price}>R${price}</Text>
-                    )}
-                    <Text style={Styles.discount}>R${price - discount}</Text>
                 </View>
-                <WhatsappButton />
+                <View style={Styles.infoContainer}>
+                    <Text style={[Styles.name, { maxWidth: 175 }]} numberOfLines={1} ellipsizeMode="tail">
+                        {name}
+                    </Text>
+                    {discount >= 0 && <Text style={Styles.price}>R${price}</Text>}
+                    <Text style={Styles.discount}>R${price - discount}</Text>
+                    <View style={Styles.WhatsappButton}>
+                        <WhatsappButton />
+                    </View>
+                </View>
             </View>
         </TouchableOpacity>
     );
@@ -46,10 +47,7 @@ const ItemCard = ({ item }) => {
 const ItemList = ({ items }) => {
     return (
         <View style={Styles.itemList}>
-            {!!items.length &&
-                items.map((item) => (
-                    < ItemCard key={item.id} item={item} />
-                ))}
+            {!!items.length && items.map((item) => <ItemCard key={item.id} item={item} />)}
         </View>
     );
 };

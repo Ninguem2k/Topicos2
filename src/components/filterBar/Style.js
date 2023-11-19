@@ -2,16 +2,14 @@ import { StyleSheet } from "react-native";
 
 const Styles = StyleSheet.create({
     container: {
-        marginTop: 5,
         alignSelf: "center",
         flexDirection: "row",
         alignItems: "center",
-        paddingHorizontal: 10,
-        width: "93%",
+        width: "95%",
         height: 40,
         justifyContent: "center",
         zIndex: 99,
-        backgroundColor: "#FFF",
+        marginTop: 10,
         marginBottom: 10,
     },
     filterButton: {

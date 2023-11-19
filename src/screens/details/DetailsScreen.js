@@ -16,6 +16,8 @@ import Styles from "./Style";
 import api from "../../services/api";
 import CardUser from "../../components/cardUser/Index";
 import WhatsappButton from "../../components/whatsappButton/Index";
+import Icon from "react-native-vector-icons/Ionicons";
+
 
 export const DetailsScreen = () => {
     const [currentImage, setCurrentImage] = useState(0);
@@ -24,6 +26,7 @@ export const DetailsScreen = () => {
     const [displayedComponentInfo, setDisplayedComponentInfo] = useState("description");
     const navigation = useNavigation();
     const route = useRoute();
+
 
     useEffect(() => {
         const fetchItem = async () => {
@@ -49,6 +52,11 @@ export const DetailsScreen = () => {
                 </Pressable>
             ),
         });
+        const unsubscribe = navigation.addListener("focus", () => {
+            navigation.setOptions({ tabBarShow: false });
+        });
+
+        return unsubscribe;
     }, [navigation, item]);
 
     const handleImageScroll = event => {
@@ -85,7 +93,6 @@ export const DetailsScreen = () => {
     const renderDescription = () => {
         return (
             <ScrollView style={Styles.productDetailsContainer}>
-                <Text style={Styles.productTitle}>{item?.name}</Text>
                 <Text style={Styles.productDescription}>{item?.description}</Text>
             </ScrollView>
         );
@@ -140,27 +147,15 @@ export const DetailsScreen = () => {
                     <View style={Styles.medCard}>
                         <View style={Styles.cardInf}>
                             <View>
-                                <View style={Styles.rating}>
-                                    {[...Array(5)].map((_, i) => (
-                                        <Feather
-                                            key={i}
-                                            name="star"
-                                            size={22}
-                                            color={i < Math.floor(5) ? "#FFD700" : "#CCC"}
-                                        />
-                                    ))}
-                                </View>
+                                <Text style={Styles.productTitle}>{item?.name}</Text>
                                 <View style={Styles.priceContainer}>
-                                    <Text style={Styles.currentPrice}>R${calculateDiscountedPrice()}</Text>
+                                    <Text style={[Styles.currentPrice, { maxWidth: 80 }]} numberOfLines={1} ellipsizeMode="tail">R${calculateDiscountedPrice()}</Text>
                                     {item?.discount > 0 && <Text style={Styles.previousPrice}>R${item.price}</Text>}
                                 </View>
-                            </View>
-                            <View>
-                                <WhatsappButton
-                                    style={Styles.buttonContract}
-                                    phoneNumber={item?.user?.phone}
-                                    name={item?.name}
-                                />
+                                <View style={Styles.rating}>
+                                    <Icon name={"star"} size={15} color="#ff0" />
+                                    <Text style={Styles.ratingText}>{"4"}</Text>
+                                </View>
                             </View>
                         </View>
                     </View>
@@ -188,8 +183,15 @@ export const DetailsScreen = () => {
                         {displayedComponentInfo === "comments" && renderComments()}
                         {displayedComponentInfo === "owner" && renderUser()}
                     </View>
+                    <View style={Styles.buttonContract}>
+                        <WhatsappButton
+                            phoneNumber={item?.user?.phone}
+                            name={item?.name}
+                        />
+                    </View>
                 </>
-            )}
+            )
+            }
         </ScrollView >
     );
 };

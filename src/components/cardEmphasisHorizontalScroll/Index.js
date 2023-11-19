@@ -44,17 +44,18 @@ const ItemList = ({ categoryName, categoryId, items }) => {
 };
 
 const CardEmphasisHorizontalScroll = ({ items }) => {
+    const filteredItems = items.filter((objeto) => objeto.services.length != 0);
+
     return (
         <View style={Styles.itemList}>
-            {!!items.length &&
-                items.map((objeto) => (
-                    <ItemList
-                        key={objeto.id}
-                        items={objeto.services}
-                        categoryName={objeto.name}
-                        categoryId={objeto.id}
-                    />
-                ))}
+            {!!filteredItems.length && (
+                <ItemList
+                    key={filteredItems[0].id}
+                    items={filteredItems[0].services}
+                    categoryName={filteredItems[0].name}
+                    categoryId={filteredItems[0].id}
+                />
+            )}
         </View>
     );
 };

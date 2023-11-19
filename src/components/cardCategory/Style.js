@@ -20,15 +20,27 @@ const Styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
+    
     cardContent: {
         justifyContent: "center",
         alignItems: "center",
+        alignContent: "center",
+        margin: 2,
+    },
+
+    cardCategorie: {
+        backgroundColor: "#F200",
+        width: "100%",
+        height: 40,
+        padding: 10,
+        borderWidth: 2,
+        borderRadius: 50,
     },
 
     title: {
         fontSize: 12,
         fontWeight: "bold",
-        maxWidth: 90,
+        // maxWidth: 90,
         textAlign: "center",
     },
 

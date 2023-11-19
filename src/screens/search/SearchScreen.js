@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, ActivityIndicator } from "react-native";
+import { View, ScrollView, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import api from "../../services/api";
 import Styles from "./Style";
@@ -22,6 +23,12 @@ export function SearchScreen() {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [activeFilter, setActiveFilter] = useState("Todos");
+
+    const [isViewVisible, setIsViewVisible] = useState(false);
+
+    const toggleView = () => {
+        setIsViewVisible(!isViewVisible);
+    };
 
     const filters = [
         "Todos",
@@ -51,11 +58,24 @@ export function SearchScreen() {
         fetchItems();
     }, [route.params?.input, activeFilter]);
 
+    const Menu = () => {
+        return (
+            <TouchableOpacity onPress={toggleView} style={Styles.buttonMenu}>
+                <Icon name={'menu'} size={25} color="white" />
+            </TouchableOpacity>
+        );
+    };
+
     return (
         <View style={Styles.container}>
-             <Text style={Styles.msgNotFoundItems}>Faça uma Busca.</Text>
+            <Text style={Styles.textTop}>Encontre o que você procura!</Text>
             <View style={Styles.containerSearch}>
-                <Search />
+                <View style={Styles.contentSearch}>
+                    <Search />
+                </View>
+                <View style={Styles.contentMenu}>
+                    <Menu />
+                </View>
             </View>
 
             {isLoading ? (
@@ -64,12 +84,15 @@ export function SearchScreen() {
                 <Text style={Styles.msgNotFoundItems}>Faça uma Busca.</Text>
             ) : (
                 <View style={Styles.container}>
-                    <FilterBar
-                        filters={filters}
-                        activeFilter={activeFilter}
-                        setActiveFilter={setActiveFilter}
-                    />
-                    <ScrollView>
+                    {isViewVisible && (
+                        <FilterBar
+                            filters={filters}
+                            activeFilter={activeFilter}
+                            setActiveFilter={setActiveFilter}
+                        />
+                    )}
+                    <Text style={Styles.listServicesTitle}>Resultado</Text>
+                    <ScrollView style={Styles.listServices}>
                         <ItemList items={items} />
                     </ScrollView>
                 </View>

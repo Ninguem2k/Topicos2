@@ -12,6 +12,7 @@ import Styles from "./Style";
 export function HomeScreen() {
     const [items, setItems] = useState([]);
     const [categorys, setCategorys] = useState([]);
+    const [emphasis, setEmphasis] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { loginWithToken } = useContext(AuthContext);
 
@@ -27,8 +28,10 @@ export function HomeScreen() {
             try {
                 const responseCategorys = await api.get("/categories");
                 const responseItems = await api.get("/categories/home");
+                const responseItemsEmphasis = await api.get("/services/search/ex");
                 setCategorys(responseCategorys.data);
                 setItems(responseItems.data);
+                setEmphasis(responseItemsEmphasis);
             } catch (error) {
                 console.error("Error fetching items:", error);
             } finally {
@@ -48,7 +51,7 @@ export function HomeScreen() {
                     <ActivityIndicator size="large" color="#000" />
                 ) : (
                     <>
-                        {/* <CardCategory  categorys={categorys.data} /> */}
+                        <CardCategory  categorys={categorys.data} />
                         <CardEmphasisHorizontalScroll items={items.data} />
                         <CardHorizontalScroll items={items.data} />
                     </>
