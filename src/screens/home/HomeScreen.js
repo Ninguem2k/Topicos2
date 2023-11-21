@@ -28,7 +28,7 @@ export function HomeScreen() {
             try {
                 const responseCategorys = await api.get("/categories");
                 const responseItems = await api.get("/categories/home");
-                const responseItemsEmphasis = await api.get("/services/search/ex");
+                const responseItemsEmphasis = await api.get("/emphasis/services");
                 setCategorys(responseCategorys.data);
                 setItems(responseItems.data);
                 setEmphasis(responseItemsEmphasis);

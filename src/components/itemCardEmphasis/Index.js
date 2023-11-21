@@ -17,7 +17,7 @@ const ItemCardEmphasis = ({ item }) => {
 
             <View style={Styles.info}>
                 <ElementsCards Texts={item.name} />
-                <ElementsCards Texts={item.price} />
+                <ElementsCards Texts={"R$ " + item.price} />
             </View>
 
         </View>

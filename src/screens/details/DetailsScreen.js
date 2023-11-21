@@ -27,7 +27,6 @@ export const DetailsScreen = () => {
     const navigation = useNavigation();
     const route = useRoute();
 
-
     useEffect(() => {
         const fetchItem = async () => {
             try {
@@ -45,18 +44,14 @@ export const DetailsScreen = () => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: item?.name || "Detatalhes",
+            title: item?.name || "Detalhes",
             headerRight: () => (
                 <Pressable onPress={shareRecipe}>
                     <Feather name="share-2" color="#121212" size={24} />
                 </Pressable>
             ),
+            tabBarStyle: { display: 'none' },
         });
-        const unsubscribe = navigation.addListener("focus", () => {
-            navigation.setOptions({ tabBarShow: false });
-        });
-
-        return unsubscribe;
     }, [navigation, item]);
 
     const handleImageScroll = event => {

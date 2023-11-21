@@ -4,7 +4,6 @@ import Styles from './Style';
 import api from '../../services/api';
 
 const DropdownCategory = ({ onData, categoryId }) => {
-    console.log(onData);
     const [modalVisible, setModalVisible] = useState(false);
     const [searchText, setSearchText] = useState('');
     const [categoryList, setCategoryList] = useState([]);
@@ -14,8 +13,7 @@ const DropdownCategory = ({ onData, categoryId }) => {
         async function fetchData() {
             try {
                 const response = await api.get('/categories');
-                console.log(response.data);
-                setCategoryList(response.data);
+                setCategoryList(response.data.data);
                 await setCurrentCategory();
             } catch (error) {
                 console.error('Error fetching items:', error);

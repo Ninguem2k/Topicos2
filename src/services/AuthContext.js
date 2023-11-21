@@ -5,6 +5,10 @@ import api from './api';
 
 export const AuthContext = createContext();
 
+const LOGIN_ENDPOINT = '/sessions';
+const CONTENT_TYPE_JSON = 'application/json';
+const REFRESH_TOKEN_ENDPOINT = '/refresh_token';
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
@@ -15,10 +19,8 @@ export const AuthProvider = ({ children }) => {
             const config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: '/sessions',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                url: LOGIN_ENDPOINT,
+                headers: { CONTENT_TYPE_JSON },
                 data: {
                     email: username,
                     password: password,
@@ -26,11 +28,9 @@ export const AuthProvider = ({ children }) => {
             };
             const response = await api.request(config);
 
-            const { token: accessToken, token: refreshToken } = response.data.authorization;
+            const { token: accessToken } = response.data.authorization;
             const { user: userData } = response.data;
-
             await AsyncStorage.setItem('accessToken', accessToken);
-            await AsyncStorage.setItem('refreshToken', refreshToken);
             userData['token'] = accessToken;
             setUser(userData);
             setToken(accessToken);
@@ -42,38 +42,40 @@ export const AuthProvider = ({ children }) => {
 
     const loginWithToken = async () => {
         try {
-            const oldRefreshToken = await AsyncStorage.getItem('refreshToken');
-
+            const oldRefreshToken = await AsyncStorage.getItem('accessToken');
+    
             if (oldRefreshToken) {
                 const config = {
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: '/refresh_token',
+                    url: REFRESH_TOKEN_ENDPOINT,
                     headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    data: {
-                        refreshToken: oldRefreshToken,
+                        'Content-Type': CONTENT_TYPE_JSON,
+                        Authorization: `Bearer ${oldRefreshToken}`,
                     },
                 };
-
+    
                 const response = await api.request(config);
-                const { token: accessToken, refreshToken, user: userData } = response.data;
+                if (response.status !== 200) {
+                    navigation.navigate('LoginScreen');
+                    return;
+                }
+    
+                const { token: accessToken } = response.data.authorisation;
+                const { user: userData } = response.data;
                 await AsyncStorage.setItem('accessToken', accessToken);
-                await AsyncStorage.setItem('refreshToken', refreshToken);
                 userData['token'] = accessToken;
                 setUser(userData);
                 setToken(accessToken);
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
     const logout = async () => {
         try {
             await AsyncStorage.removeItem('accessToken');
-            await AsyncStorage.removeItem('refreshToken');
             setUser(null);
             setToken(null);
             navigation.navigate('HomeScreen');

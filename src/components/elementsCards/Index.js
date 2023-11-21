@@ -14,7 +14,7 @@ const ElementsCards = ({ Texts }) => {
     return (
         <View style={Styles.container}>
             <View style={Styles.element}>
-                <Text style={Styles.text}>{Texts}</Text>
+                <Text style={Styles.text}  numberOfLines={1} >{Texts}</Text>
             </View>
         </View>
     );

@@ -12,42 +12,69 @@ import { MenuScreen } from "../screens/menu/MenuScreen";
 import { ProfileScreen } from "../screens/profile/ProfileScreen";
 import { SearchScreen } from "../screens/search/SearchScreen";
 
-
 const Stack = createNativeStackNavigator();
 
-export function SackRoutes() {
+export function StackRoutes() {
     return (
         <Stack.Navigator>
             <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
-                options={{ headerShown: false }}
+                options={{
+                    headerShown: false,
+                }}
             />
             <Stack.Screen
                 name="MenuScreen"
                 component={MenuScreen}
-                options={{ title: "Menu" }}
+                options={{
+                    title: "Menu",
+                }}
             />
             <Stack.Screen
                 name="SearchScreen"
                 component={SearchScreen}
-                options={{ title: "Vejá oque encotramos" }}
+                options={{
+                    title: "See what we found",
+                }}
             />
-            <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
-            <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
-            <Stack.Screen name="ConfigScreen" component={ConfigScreen} />
+            <Stack.Screen
+                name="DetailsScreen"
+                component={DetailsScreen}
+                options={{
+                    tabBarStyle: { display: 'none' }, 
+                }}
+            />
+            <Stack.Screen
+                name="FavoritesScreen"
+                component={FavoritesScreen}
+            />
+            <Stack.Screen
+                name="ConfigScreen"
+                component={ConfigScreen}
+            />
             <Stack.Screen
                 name="ProfileScreen"
-                options={{ title: "Perfil do Usuario" }}
                 component={ProfileScreen}
+                options={{
+                    title: "User Profile",
+                }}
             />
             <Stack.Screen
                 name="CategoriesScreen"
-                options={{ title: "Nome da categoria" }}
                 component={CategoriesScreen}
+                options={{
+                    title: "Category Name",
+                }}
             />
-            <Stack.Screen name="AddItemScreen" component={AddItemScreen} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen
+                name="AddItemScreen"
+                component={AddItemScreen}
+            />
+            <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+            />
             <Stack.Screen
                 name="CreateUserScreen"
                 component={CreateUserScreen}
@@ -55,3 +82,4 @@ export function SackRoutes() {
         </Stack.Navigator>
     );
 }
+

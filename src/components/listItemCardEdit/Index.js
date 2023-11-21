@@ -53,7 +53,7 @@ const ItemCardEdit = ({ item }) => {
             });
     };
 
-    const coverSelect = images ? images[0].url : "https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg";
+    const coverSelect = !item.images ? item.images[0].url : "https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg";
 
     const renderRatingStars = () => {
         const stars = Array.from({ length: 5 }).map((_, i) => (

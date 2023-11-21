@@ -41,7 +41,7 @@ export function AddItemScreen() {
     const fetchItem = async () => {
         try {
             const response = await api.get(`/services/${id}`);
-            const { name, description, price, discount, category_id } = response.data;
+            const { name, description, price, discount, category_id } = response.data.data[0];
             setName(name);
             setDescription(description);
             setPrice(price.toString());

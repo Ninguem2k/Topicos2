@@ -1,8 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { useIsFocused } from "@react-navigation/native";
 
-import { SackRoutes } from "./StackRoutes";
+import { StackRoutes } from "./StackRoutes";
 import { SearchScreen } from "../screens/search/SearchScreen";
 import { MenuScreen } from "../screens/menu/MenuScreen";
 
@@ -10,49 +11,10 @@ const Tab = createBottomTabNavigator();
 
 export function Routes() {
     return (
-        <Tab.Navigator screenOptions={screenOptions}>
-            <Tab.Screen
-                name="HomeTab"
-                component={SackRoutes}
-                options={({ route }) => ({
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? "home" : "home-outline"}
-                            color={focused ? "#7e64ff" : color}
-                            size={size}
-                        />
-                    ),
-                    tabBarVisible: isTabVisible(route.name),
-                })}
-            />
-            <Tab.Screen
-                name="SearchTab"
-                component={SearchScreen}
-                options={({ route }) => ({
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? "search" : "search-outline"}
-                            color={focused ? "#7e64ff" : color}
-                            size={size}
-                        />
-                    ),
-                    tabBarVisible: isTabVisible(route.name),
-                })}
-            />
-            <Tab.Screen
-                name="MenuTab"
-                component={MenuScreen}
-                options={({ route }) => ({
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? "people" : "people-outline"}
-                            color={focused ? "#7e64ff" : color}
-                            size={size}
-                        />
-                    ),
-                    tabBarVisible: isTabVisible(route.name),
-                })}
-            />
+        <Tab.Navigator screenOptions={screenOptions} >
+            {renderTab("HomeTab", StackRoutes, "home")}
+            {renderTab("SearchTab", SearchScreen, "search")}
+            {renderTab("MenuTab", MenuScreen, "people")}
         </Tab.Navigator>
     );
 }
@@ -68,7 +30,22 @@ const screenOptions = {
     },
 };
 
-function isTabVisible(routeName) {
-    const allowedScreens = ["HomeTab", "SearchTab", "MenuTab"];
-    return allowedScreens.includes(routeName);
+function renderTab(name, component, icon) {
+    return (
+        <Tab.Screen
+            name={name}
+            component={component}
+            options={() => ({
+                tabBarIcon: ({ color, size, focused }) => (
+                    <Ionicons
+                        name={focused ? icon : icon + "-outline"}
+                        color={focused ? "#7e64ff" : color}
+                        size={size}
+                    />
+                ),
+                tabBarShowLabel: false,
+            })}
+        />
+    );
 }
+
