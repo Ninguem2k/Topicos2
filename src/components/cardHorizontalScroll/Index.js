@@ -23,7 +23,7 @@ const ItemList = ({ categoryName, categoryId, items }) => {
           {categoryName}
         </Text>
         <TouchableOpacity onPress={handleNavigateCategory}>
-          <Text style={Styles.viewMoreButtonText}>Ver Mais</Text>
+          <Text style={Styles.viewMoreButtonText}>Mostrar Mais</Text>
         </TouchableOpacity>
       </View>
 

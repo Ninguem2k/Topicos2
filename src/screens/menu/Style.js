@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
   buttonText: {
     marginLeft: 8,
     fontSize: 18,
-    fontWeight: "bold",
   },
   login: {
     flexDirection: "row-reverse",
     padding: 5,
+    top: 20,
   },
   buttonTextLogin: {
     width: 175,

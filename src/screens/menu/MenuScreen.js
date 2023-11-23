@@ -72,8 +72,8 @@ export const MenuScreen = () => {
           <Text style={Styles.buttonText}>Configuração</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleAddItem} style={Styles.button}>
-          <Feather name="book" size={24} color="#000" />
-          <Text style={Styles.buttonText}>Cadastrar um serviço</Text>
+          <Feather name="folder-plus" size={24} color="#000" />
+          <Text style={Styles.buttonText}>Novo serviço</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleLogout} style={Styles.button}>
           <Feather name="log-out" size={24} color="#000" />

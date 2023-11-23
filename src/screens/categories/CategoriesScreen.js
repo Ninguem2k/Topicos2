@@ -1,6 +1,7 @@
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { useState, useEffect, useLayoutEffect } from "react";
-import { ScrollView, ActivityIndicator } from "react-native";
+import { ScrollView, ActivityIndicator, View } from "react-native";
+import Styles from "./Style";
 
 import ItemList from "../../components/listItemCard/Index";
 import api from "../../services/api";
@@ -16,7 +17,6 @@ export function CategoriesScreen() {
     async function fetchItems() {
       try {
         const response = await api.get(`/categories/${route.params?.id}`);
-        console.log(response);
         setCategorie(response.data.name);
         setItems(response.data.services);
       } catch (error) {
@@ -41,7 +41,9 @@ export function CategoriesScreen() {
       {isLoading ? (
         <ActivityIndicator size="large" color="#000" />
       ) : (
-        <ItemList items={items} />
+        <View  style={Styles.container}>
+          <ItemList items={items} />
+        </View>
       )}
     </ScrollView>
   );

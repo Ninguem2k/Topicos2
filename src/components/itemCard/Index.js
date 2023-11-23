@@ -5,6 +5,7 @@ import Styles from "./Style";
 import React from "react";
 
 const ItemCard = ({ item }) => {
+    console.log(item.images);
     const coverSelect = !item.images ? item.images[0].url : "https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg";
     return (
         <View style={Styles.container}>

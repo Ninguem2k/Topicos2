@@ -45,7 +45,6 @@ const ItemCardEdit = ({ item }) => {
         api
             .request(config)
             .then((response) => {
-                console.log(response.status);
                 Alert.alert("Serviço deletado com sucesso!");
             })
             .catch((error) => {
